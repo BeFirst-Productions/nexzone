@@ -1,5 +1,7 @@
 import HeroSection from "@/components/Home/HeroSection";
 import AboutSection from "@/components/Home/AboutSection";
+import ProductsSection from "@/components/Home/ProductsSection";
+import AccessoriesSection from "@/components/Home/AccessoriesSection";
 import Container from "@/components/Common/Layout/Container";
 import ServiceSection from "@/components/Home/ServiceSection";
 import AdditionalServices from "@/components/Home/AdditionalServices";
@@ -13,6 +15,11 @@ export default function Home() {
       <ServiceSection />
       <AdditionalServices />
       <WhyChooseSection />
+      <ProductsSection />
+      <AccessoriesSection />
+
+      {/* Other sections that need a contained width will go inside Container below */}
+
     </main>
   );
 }

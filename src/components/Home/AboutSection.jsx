@@ -77,7 +77,7 @@ export default function AboutSection() {
                         {features.map((feature) => (
                             <div
                                 key={feature.id}
-                                className={`bg-white rounded-2xl border-2 ${feature.borderColor} p-6 shadow-sm hover:shadow-md transition-shadow`}
+                                className={` rounded-2xl border-2 ${feature.borderColor} p-6 shadow-sm hover:shadow-md transition-shadow`}
                             >
                                 {feature.isVideo ? (
                                     <div className="flex items-center justify-center h-full min-h-[200px] bg-gray-100 rounded-lg">

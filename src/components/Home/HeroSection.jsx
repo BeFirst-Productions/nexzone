@@ -70,7 +70,7 @@ export default function HeroSection() {
                     <div className="w-full lg:w-1/2 flex flex-col justify-center items-start z-10 text-white relative min-h-[350px] lg:min-h-[450px]">
 
                         {/* Animated Text Section */}
-                        <div className="relative w-full h-[260px] sm:h-[300px] md:h-[250px] lg:h-[400px] xl:h-[380px] 2xl:h-[300px] overflow-hidden">   {slides.map((slide, index) => {
+                        <div className="relative w-full min-h-[260px] sm:min-h-[280px] md:min-h-[300px] lg:min-h-[350px] xl:min-h-[380px]">   {slides.map((slide, index) => {
                             let animClass = "hidden";
 
                             if (index === currentIndex) {
@@ -111,11 +111,11 @@ export default function HeroSection() {
                     </div>
 
                     {/* Right Image Container */}
-                    <div className="w-full lg:w-1/2 relative flex justify-center lg:justify-end items-center h-[300px] sm:h-[300px] lg:h-[600px] xl:h-[700px]">
+                    <div className="w-full lg:w-1/2 relative flex justify-center lg:justify-end items-center h-[280px] sm:h-[320px] lg:h-[500px] xl:h-[600px]">
 
                         {/* Decorative Background SVG Shape */}
-                        <div className="absolute bottom-[5%] md:bottom-[5%] lg:bottom-[15%] 2xl:bottom-0  left-1/2 -translate-x-1/2 w-[120%] lg:w-[130%] max-w-[900px] z-0 pointer-events-none flex justify-center">
-                            <svg viewBox="0 0 749 240" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto drop-shadow-sm">
+                        <div className="absolute bottom-[8%] md:bottom-[5%] lg:bottom-[17%] 2xl:bottom-[10%]  left-2/5 -translate-x-[40%] lg:-translate-x-[35%] w-[120%] md:w-[90%] lg:w-[130%] 2xl:w-[125%] max-w-[900px] 2xl:max-w-[1100px] z-0 pointer-events-none flex justify-center">
+                            <svg viewBox="0 0 749 240" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto drop-shadow-sm scale-y-125">
                                 <ellipse cx="267.783" cy="287.29" rx="267.783" ry="287.29" transform="matrix(0.945869 -0.324548 0.95803 0.286669 -154.476 124.283)" fill="#15548A" fillOpacity="0.4" />
                             </svg>
                         </div>
@@ -129,7 +129,7 @@ export default function HeroSection() {
                                 src={activeSlide.image}
                                 alt={`Banner ${activeSlide.id}`}
                                 fill
-                                style={{ objectFit: 'contain', objectPosition: 'center right' }}
+                                style={{ objectFit: 'cover', objectPosition: 'center right' }}
                                 priority
                             />
                         </div>
