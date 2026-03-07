@@ -122,3 +122,9 @@ body {
 .slide-exit {
   animation: slideToTopSmooth 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
+
+/* ─── Best Printer Brands – marquee keyframe (component uses inline styles) ─ */
+@keyframes brandMarquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(calc(-100% / 3)); }
+}

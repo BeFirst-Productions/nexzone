@@ -1,0 +1,86 @@
+
+
+export default function SectionDoublelineHeader({
+    normalText = "",
+    highlightText = "",
+    highlightColor = "#1565C8",
+    normalColor = "#111111",
+    MobfontSize="1.8rem",
+    TabfontSize="4.8vw",
+    DeskfontSize="2.5rem",
+}) {
+    const hasNormal = normalText.trim().length > 0;
+    const hasHighlight = highlightText.trim().length > 0;
+
+    return (
+        <div className="relative w-full" style={{ maxWidth: "480px", marginBottom: "22px" }} >
+
+
+            <div style={{ paddingTop: "19.74%", position: "relative" }}>
+
+                <svg
+                    viewBox="0 0 532 105"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="none"
+                    aria-hidden="true"
+                    style={{
+                        position: "absolute",
+                        inset: 0,
+                        width: "100%",
+                        height: "100%",
+                        display: "block",
+                    }}
+                >
+                    <path
+                        d="M7.60008 0H92.112C93.2021 0 94.0857 0.883649 94.0857 1.97368C94.0857 3.06372 93.2021 3.94737 92.112 3.94737H40.0667C35.3963 3.94737 31.7085 7.95688 32.9205 12.4673C36.8032 26.9177 46.712 41.061 53.314 48.7459C54.7502 50.4177 56.8686 51.3158 59.0726 51.3158H505.346C522.239 53.4761 529.224 78.8812 531.29 96.7286C531.811 101.235 528.17 105 523.634 105H372.529C371.657 105 370.95 104.293 370.95 103.421C370.95 102.549 371.657 101.842 372.529 101.842H489.404C494.296 101.842 498.069 97.4714 496.904 92.7201C492.079 73.0509 482.662 61.3617 476.827 56.6313C475.648 55.6754 474.146 55.2604 472.629 55.2551L26.9888 53.7101C26.3764 53.708 25.7564 53.6384 25.1657 53.4768C5.84241 48.1887 0.624149 23.5529 0.00557304 7.53382C-0.15788 3.30093 3.36404 0 7.60008 0Z"
+                        fill="url(#sectionDblGrad)"
+                    />
+                    <defs>
+                        <linearGradient
+                            id="sectionDblGrad"
+                            x1="531.94" y1="52.5"
+                            x2="-0.0577755" y2="52.5"
+                            gradientUnits="userSpaceOnUse"
+                        >
+                            <stop stopColor="#15548A" />
+                            <stop offset="1" stopColor="#01223F" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+
+
+                <div
+                    style={{
+                        position: "absolute",
+                        top: "24%",
+                        left: "18%",
+                        transform: "translateY(-50%)",
+                        whiteSpace: "nowrap",
+                    }}
+                >
+                    <h2
+                        style={{
+                            fontWeight: 700,
+                            lineHeight: 1.2,
+                            fontSize: `clamp(${MobfontSize}, ${TabfontSize}, ${DeskfontSize})`,
+                            margin: 0,
+                        }}
+                    >
+                        {hasNormal && (
+                            <span style={{ color: normalColor }}>
+                                {normalText}{hasHighlight ? "\u00A0" : ""}
+                            </span>
+                        )}
+                        {hasHighlight && (
+                            <span style={{ color: highlightColor }}>
+                                {highlightText}
+                            </span>
+                        )}
+                    </h2>
+                </div>
+
+            </div>
+        </div>
+    );
+}
