@@ -60,24 +60,24 @@ export default function HeroSection() {
                     <div className="w-full lg:w-1/2 flex flex-col justify-center items-start z-10 text-white">
 
 
+                        {/* Grid Stack solves the absolute positioning height collapse. 
+                            The container naturally grows to the tallest slide. */}
                         <div className="
-                            relative w-full overflow-hidden
-                            min-h-[280px] sm:min-h-[260px] md:min-h-[320px]
-                            lg:min-h-[380px] xl:min-h-[400px]
-                            mb-2 sm:mb-0 md:mb-8
+                            grid w-full overflow-hidden
+                            mb-6 sm:mb-8 md:mb-12
                         ">
                             {slides.map((slide, index) => {
                                 let animClass = "hidden";
                                 if (index === currentIndex) {
-                                    animClass = "slide-enter absolute top-0 left-0 w-full";
+                                    animClass = "slide-enter z-10";
                                 } else if (index === prevIndex) {
-                                    animClass = "slide-exit absolute top-0 left-0 w-full";
+                                    animClass = "slide-exit z-0";
                                 }
 
                                 return (
                                     <div
                                         key={`content-${slide.id}`}
-                                        className={`flex flex-col items-start space-y-4 md:space-y-6 ${animClass}`}
+                                        className={`flex flex-col items-start space-y-4 md:space-y-6 pb-4 col-start-1 row-start-1 ${animClass}`}
                                     >
                                         <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold leading-[1.2] md:leading-[1.1] tracking-tight drop-shadow-sm">
                                             {slide.titleLine1Part1}

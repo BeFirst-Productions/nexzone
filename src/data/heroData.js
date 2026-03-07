@@ -14,8 +14,7 @@ export const slides = [
         titleLine1Highlight1: "Managed Print Solutions for ",
         titleLine1Highlight2: " Modern",
         titleLine2: " Businesses",
-        description: "NexZone Technologies delivers end-to-end office automation services, including the supply, rental, servicing, and maintenance of printers, photocopiers, and scanners, along with managed print and document solutions.",
-        image: "/images/banner/banner-03.webp"
+description: "NexZone Technologies provides office automation solutions including supply, rental, servicing, and maintenance of printers, photocopiers, and scanners, along with managed print services.",        image: "/images/banner/banner-03.webp"
     },
     {
         id: 3,
