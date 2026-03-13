@@ -6,10 +6,12 @@ import Container from '../Common/Layout/Container';
 
 const ServiceCard = ({ service, index }) => {
     const isEven = index % 2 === 0;
+    const slug = service.title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
 
     return (
         <div
-            className={`relative flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-stretch gap-0 rounded-[20px] md:rounded-[40px] overflow-hidden border border-white/10 shadow-2xl mb-8 last:mb-0 group min-h-0`}
+            id={slug}
+            className={`relative flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-stretch gap-0 rounded-[20px] md:rounded-[40px] overflow-hidden border border-white/10 shadow-2xl mb-8 last:mb-0 group min-h-0 scroll-mt-24`}
             style={{
                 backgroundImage: "linear-gradient(90deg, rgba(21,84,138,1.00) 0%, rgba(11,17,17,1.00) 100%)",
                 backgroundPosition: "center center"

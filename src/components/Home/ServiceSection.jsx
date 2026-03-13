@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import SectionHeading from "../Common/SectionHeading";
 
@@ -58,16 +59,18 @@ export default function ServiceSection() {
                     <div className="flex flex-col gap-3 w-[496px] max-w-full">
                         {services.map((service, index) => {
                             const isActive = index === activeIndex;
+                            const slug = service.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+                            
                             return (
-                                <button
+                                <Link
                                     key={service}
-                                    type="button"
+                                    href={`/services#${slug}`}
                                     onMouseEnter={() => setActiveIndex(index)}
                                     className={`
                                         flex items-center w-full
                                         rounded-2xl px-5 py-3.5
                                         text-sm sm:text-base font-semibold
-                                        transition-all duration-300 cursor-default
+                                        transition-all duration-300 cursor-pointer
                                         ${isActive
                                             ? "bg-white text-[#0a1628] shadow-lg"
                                             : "bg-[#1565C8] hover:bg-[#1878e8] text-white shadow-md"
@@ -79,7 +82,7 @@ export default function ServiceSection() {
                                         bg-[#E22386] flex-shrink-0 mr-4
                                     " />
                                     <span className="text-left">{service}</span>
-                                </button>
+                                </Link>
                             );
                         })}
                     </div>

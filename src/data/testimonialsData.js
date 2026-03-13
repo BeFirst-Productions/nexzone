@@ -1,63 +1,63 @@
 export const testimonialsData = [
     {
         id: 1,
-        name: "Arjun Mehta",
-        company: "TechNova Solutions",
+        name: "Operations Manager",
+        company: "Logistics Company",
         initials: "AM",
         color: "#2563EB",
         image: "/images/testimonials/testimonial-prof.svg",
         review:
-            "NexZone Technologies transformed our office operations. Their printer rental and AMC service is seamlessly managed, letting our team focus on what truly matters.",
+            " NexZone provided us with printer rental and AMC support, and the performance has been excellent. Their quick response time reduced our downtime significantly.",
     },
     {
         id: 2,
-        name: "Priya Sharma",
-        company: "Stellar Exports LLC",
+        name: "IT Administrator",
+        company: "Corporate Office",
         initials: "PS",
         color: "#7C3AED",
         image: "/images/testimonials/testimonial-prof.svg",
         review:
-            "Outstanding after-sales support. Every time we raise a request, their technicians are at our door within hours. Truly a reliable partner for managed print services.",
+            " Their team handled installation and network configuration smoothly. Preventive maintenance keeps our devices running without issues. Highly recommended.",
     },
     {
         id: 3,
-        name: "Khalid Al Harbi",
-        company: "Gulf Trade Corp",
+        name: "Finance Manager",
+        company: "SME Business",
         initials: "KH",
         color: "#059669",
         image: "/images/testimonials/testimonial-prof.svg",
         review:
-            "We rely on NexZone for toner, spare parts, and routine maintenance. Their genuine OEM supplies keep our high-volume printers running without a single breakdown.",
+            "Flexible rental plans and transparent pricing helped us control printing costs while upgrading to high-speed machines.",
     },
     {
         id: 4,
-        name: "Sara Matthews",
-        company: "Orion Media Group",
+        name: "Procurement Head",
+        company: "Trading Company",
         initials: "SM",
         color: "#DC2626",
         image: "/images/testimonials/testimonial-prof.svg",
         review:
-            "Switched to NexZone's AMC package last year and haven't looked back. The cost savings and peace of mind are enormous — I highly recommend them to any UAE business.",
+            "We never worry about consumables. Genuine toner supply and on-time delivery keep our workflow uninterrupted.",
     },
     {
         id: 5,
-        name: "Raj Patel",
-        company: "Brightline Interiors",
+        name: "Admin Manager",
+        company: "Healthcare Group",
         initials: "RP",
         color: "#D97706",
         image: "/images/testimonials/testimonial-prof.svg",
         review:
-            "From CCTV to networking and printer services, NexZone handles all our technical needs under one roof. Exceptional responsiveness and professional team every time.",
+            " From consultation to after-sales support, NexZone delivers professional service and dependable machines across all our branches.",
     },
     {
         id: 6,
-        name: "Fatima Nasser",
-        company: "Nexus Logistics UAE",
+        name: "Admin Manager",
+        company: "Corporate Office",
         initials: "FN",
         color: "#0891B2",
         image: "/images/testimonials/testimonial-prof.svg",
         review:
-            "The biometric and printer integration NexZone handled for our new office was flawless. Professional installation, clean cabling, and thorough staff training included.",
+            "NexZone’s printer rental and AMC support have transformed our office workflow. Their fast technical response and consistent performance help us operate without interruptions. Highly recommended for any business in the UAE.",
     },
 ];
 
