@@ -18,32 +18,40 @@ import { buildWhatsAppURL } from "@/utils/whatsappMessage";
 const ProductInfo = ({ product }) => {
     const hasPrice = product.price != null && product.price !== "";
     const hasRating = product.rating != null;
-    const whatsappURL = buildWhatsAppURL(product);
+
+    // Correctly resolve category and subCategory names whether they come as strings or objects
+    const categoryName = typeof product.category === 'object' ? product.category?.name : product.category;
+    const subCategoryName = typeof product.subCategory === 'object' ? product.subCategory?.name : product.subCategory;
+
+    // Use resolved strings for the whatsapp message URL generator
+    const whatsappURL = buildWhatsAppURL({
+        ...product,
+        category: categoryName,
+        subCategory: subCategoryName
+    });
 
     return (
         <div className="w-full flex flex-col gap-5">
 
             {/* ── Category + Subcategory Pills ─────────────────────────── */}
-            {(product.category || product.subCategory) && (
+            {(categoryName || subCategoryName) && (
                 <div className="flex items-center gap-2 flex-wrap">
 
-                    {product.category && (
+                    {categoryName && (
                         <span className="inline-flex items-center gap-1.5 bg-[#EFF6FF] text-[#113578] text-xs font-semibold px-3 py-1.5 rounded-full border border-[#BFDBFE]">
-                            {/* Menu / category icon */}
                             <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                             </svg>
-                            {product.category}
+                            {categoryName}
                         </span>
                     )}
 
-                    {product.subCategory && (
+                    {subCategoryName && (
                         <span className="inline-flex items-center gap-1.5 bg-[#F0FDF4] text-[#166534] text-xs font-semibold px-3 py-1.5 rounded-full border border-[#BBF7D0]">
-                            {/* Chevron-right icon */}
                             <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                             </svg>
-                            {product.subCategory}
+                            {subCategoryName}
                         </span>
                     )}
                 </div>

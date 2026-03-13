@@ -14,6 +14,7 @@ import ProductDescription from "./ProductDescription";
  * - category is now an object { _id, name, slug } from .populate() — we read .name
  */
 const ProductDetail = ({ product }) => {
+    console.log(product,"ppp");
     const images = product.images?.length ? product.images : [];
 
     // Category comes populated: { _id, name, slug }
@@ -22,7 +23,7 @@ const ProductDetail = ({ product }) => {
         : product.category;
 
     return (
-        <section className="py-10 md:py-16">
+        <section className="py-10 md:py-20">
             <div className="mx-auto w-full max-w-full 2xl:max-w-[1980px] px-4 sm:px-6 lg:px-8 xl:px-[120px] 2xl:px-[160px]">
 
                 {/* Breadcrumb */}

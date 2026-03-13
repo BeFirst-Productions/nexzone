@@ -11,12 +11,14 @@ import ProductDetail from "@/components/Products/ProductDetail";
 async function getProduct(id) {
     try {
         const res = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/product/get-product/${id}`,
+            `http://localhost:5000/v1/api/web/product/get-product/${id}`,
             { cache: "no-store" }
         );
         if (!res.ok) return null;
         const json = await res.json();
         // Backend returns: { success: true, message: "...", data: { ...product } }
+      console.log(json.data);
+      
         return json?.data || null;
     } catch (err) {
         console.error("Failed to fetch product:", err);
@@ -43,8 +45,8 @@ export default async function ProductDetailPage({ params }) {
     return (
         <main className="min-h-screen">
             <InnerHero
-                title={product.name}
-                breadcrumb={[{ label: "Products", href: "/products" }]}
+                // title={product.name}
+                breadcrumb={[{ label: "Products", href: "/products" },{label:"Product Details",href:""}]}
             />
             <ProductDetail product={product} />
         </main>

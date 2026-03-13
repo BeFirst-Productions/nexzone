@@ -29,7 +29,8 @@ const ProductImageGallery = ({ images = [], productName = "Product" }) => {
         setActiveIdx(idx);
     };
 
-    const src = images[activeIdx] || "/images/products/placeholder.png";
+    const activeImg = images[activeIdx];
+    const src = activeImg?.url || (typeof activeImg === 'string' ? activeImg : "/images/products/placeholder.png");
 
     return (
         <div className="w-full flex flex-col gap-4">
@@ -96,7 +97,7 @@ const ProductImageGallery = ({ images = [], productName = "Product" }) => {
             </div>
 
             {/* ── Thumbnail Strip ──────────────────────────────────────── */}
-            {images.length > 1 && (
+            {images.length > 0 && (
                 <div className="grid grid-cols-4 gap-2 sm:gap-3">
                     {images.map((thumbSrc, idx) => (
                         <button
@@ -112,7 +113,7 @@ const ProductImageGallery = ({ images = [], productName = "Product" }) => {
                                 }`}
                         >
                             <Image
-                                src={thumbSrc || "/images/products/placeholder.png"}
+                                src={thumbSrc?.url || (typeof thumbSrc === 'string' ? thumbSrc : "/images/products/placeholder.png")}
                                 alt={`${productName} thumbnail ${idx + 1}`}
                                 fill
                                 className="object-contain p-1.5 mix-blend-multiply"

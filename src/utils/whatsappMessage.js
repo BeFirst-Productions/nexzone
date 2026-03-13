@@ -48,33 +48,34 @@ export function buildWhatsAppURL(product = {}) {
     lines.push("I'm interested in the following product and would like more information:");
     lines.push("");
     lines.push("━━━━━━━━━━━━━━━━━━━━━━");
-    lines.push(`🖨️ *Product:* ${displayName}`);
+    lines.push(` *Product:* ${displayName}`);
 
-    if (category) lines.push(`📂 *Category:* ${category}`);
-    if (subCategory) lines.push(`📁 *Sub-category:* ${subCategory}`);
+    if (category) lines.push(` *Category:* ${category}`);
+    if (subCategory) lines.push(` *Sub-category:* ${subCategory}`);
+    if (subCategory) lines.push(` *Sub-category:* ${subCategory}`);
 
-    if (shortDescription) {
-        lines.push("");
-        lines.push(`📝 *About:* ${shortDescription}`);
-    }
+    // if (shortDescription) {
+    //     lines.push("");
+    //     lines.push(`📝 *About:* ${shortDescription}`);
+    // }
 
-    if (price != null && price !== "") {
-        lines.push(`💰 *Listed Price:* $${price}`);
-    }
+    // if (price != null && price !== "") {
+    //     lines.push(`💰 *Listed Price:* $${price}`);
+    // }
 
-    if (rating != null) {
-        const stars = "⭐".repeat(Math.round(rating));
-        const reviewText = reviewCount ? ` (${reviewCount.toLocaleString()} reviews)` : "";
-        lines.push(`${stars} *Rating:* ${Number(rating).toFixed(1)}${reviewText}`);
-    }
+    // if (rating != null) {
+    //     const stars = "⭐".repeat(Math.round(rating));
+    //     const reviewText = reviewCount ? ` (${reviewCount.toLocaleString()} reviews)` : "";
+    //     lines.push(`${stars} *Rating:* ${Number(rating).toFixed(1)}${reviewText}`);
+    // }
 
-    lines.push("━━━━━━━━━━━━━━━━━━━━━━");
-    lines.push("");
-    lines.push("Please provide details on:");
-    lines.push("• Availability & stock");
-    lines.push("• Best price / quotation");
-    lines.push("• Warranty & after-sales support");
-    lines.push("");
+    // lines.push("━━━━━━━━━━━━━━━━━━━━━━");
+    // lines.push("");
+    // lines.push("Please provide details on:");
+    // lines.push("• Availability & stock");
+    // lines.push("• Best price / quotation");
+    // lines.push("• Warranty & after-sales support");
+    // lines.push("");
     lines.push("Thank you! 🙏");
 
     // ── Encode and return ───────────────────────────────────────────────────
