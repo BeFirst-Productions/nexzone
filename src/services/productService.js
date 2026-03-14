@@ -32,7 +32,7 @@ export const productService = {
    * @param {string} query - Search term
    */
   searchProducts: (query) => {
-    return api.get('/products/search', { params: { q: query } });
+    return api.get('/product/search', { params: { query } });
   }
 };
 
