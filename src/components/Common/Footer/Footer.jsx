@@ -87,6 +87,8 @@ const Footer = () => {
                                 <div className="flex gap-4">
                                     <a
                                         href="https://www.facebook.com/share/17vAWEJVji"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="flex h-10 w-10 items-center justify-center rounded-xl transition-all hover:scale-110 hover:shadow-lg"
                                         style={{
                                             backgroundImage: "url('/socialmedia-icons/facebook.svg')",
@@ -97,7 +99,9 @@ const Footer = () => {
                                         aria-label="Facebook"
                                     ></a>
                                     <a
-                                        href="https://www.linkedin.com/groups/17649069"
+                                        href="https://www.linkedin.com/company/112245114/admin/dashboard/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="flex h-10 w-10 items-center justify-center rounded-xl transition-all hover:scale-110 hover:shadow-lg"
                                         style={{
                                             backgroundImage: "url('/socialmedia-icons/linked-in.svg')",
@@ -109,6 +113,8 @@ const Footer = () => {
                                     ></a>
                                     <a
                                         href="https://www.instagram.com/nexzone_dubai?igsh=OXdybXloN3FxcTVq"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="flex h-10 w-10 items-center justify-center rounded-xl transition-all hover:scale-110 hover:shadow-lg"
                                         style={{
                                             backgroundImage: "url('/socialmedia-icons/instagram.svg')",

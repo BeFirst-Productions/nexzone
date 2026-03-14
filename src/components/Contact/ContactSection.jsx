@@ -94,7 +94,7 @@ const ContactSection = () => {
 
         // ── Format WhatsApp Message ─────────────────────────────────────────
         const WHATSAPP_NUMBER = "971508997350";
-        const message = `👋 *New Contact Inquiry*
+        const message = `👋 *New Contact Enquiry*
 
 ━━━━━━━━━━━━━━━━━━━━━━
 👤 *Name:* ${formData.name}

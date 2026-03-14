@@ -1,7 +1,7 @@
 export const TrustData = [
     {
         id: 1,
-        title: "Professional factory",
+        title: "Professional Factory",
         description: "Modern infrastructure and skilled expertise ensuring reliable production standards.",
         icon: "/images/icons/professional-factory.svg",
         alt: "Professional Factory Icon",
@@ -15,28 +15,28 @@ export const TrustData = [
     },
     {
         id: 3,
-        title: "Factory direct sales",
+        title: "Factory Direct Sales",
         description: "Cost-effective pricing through direct sourcing with no intermediaries.",
         icon: "/images/icons/factory-direct-sale.svg",
         alt: "Factory Direct Sales Icon",
     },
     {
         id: 4,
-        title: "High quality",
+        title: "High Quality",
         description: "Durable equipment built for long-term, dependable office performance.",
         icon: "/images/icons/high-quality.svg",
         alt: "High Quality Icon",
     },
     {
         id: 5,
-        title: "Strict testing",
+        title: "Strict Testing",
         description: "Every device undergoes thorough quality checks before delivery.",
         icon: "/images/icons/strict-testing.svg",
         alt: "Strict Testing Icon",
     },
     {
         id: 6,
-        title: "Excellent team",
+        title: "Excellent Team",
         description: "Experienced professionals providing fast support and expert service.",
         icon: "/images/icons/excellent-team.svg",
         alt: "Excellent Team Icon",
