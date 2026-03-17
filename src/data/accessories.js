@@ -2,7 +2,7 @@ export const accessories = [
     {
         id: 1,
         name: "Toner Catridge",
-        image: "/images/accessories/toner-catridge.webp",
+        image: "/images/accessories/toner-catridge.jpeg",
         slug: "toner-catridge",
         categoryId: "69b268d22e9be68ab1e3fd27"
     },
