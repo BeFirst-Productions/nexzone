@@ -8,7 +8,7 @@ const InnerHero = ({ title, breadcrumb = [] }) => {
         <section
             className="relative w-full overflow-hidden py-12 md:py-24"
             style={{
-                backgroundImage: "linear-gradient(90deg, rgba(4,68,122,1.00) 1%, rgba(16,101,175,1.00) 37%, rgba(213,224,234,1.00) 100%)",
+                backgroundImage: "linear-gradient(90deg, rgba(4,68,122,1.00) 0%, rgba(16,101,175,1.00) 50%, rgba(30,120,200,1.00) 100%)",
                 backgroundPosition: "center center"
             }}
         >
