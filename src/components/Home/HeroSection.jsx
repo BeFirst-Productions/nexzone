@@ -41,7 +41,7 @@ export default function HeroSection() {
         <section
             className="w-full relative overflow-hidden"
             style={{
-                backgroundImage: 'linear-gradient(90deg, rgba(4,68,122,1.00) 1%, rgba(16,101,175,1.00) 37%, rgba(213,224,234,1.00) 100%)',
+                backgroundImage: 'linear-gradient(90deg, rgba(4, 68, 122, 1.00) 1%, rgba(16, 101, 175, 1.00) 37%, rgb(142 184 222) 100%)',
                 backgroundPosition: 'center center'
             }}
         >

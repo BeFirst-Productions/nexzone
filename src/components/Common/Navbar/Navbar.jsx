@@ -10,10 +10,11 @@ import SearchBar from "./SearchBar";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const [activeDropdown, setActiveDropdown] = useState(null);
     const pathname = usePathname();
 
     return (
-        <nav className="w-full ">
+        <nav className="w-full relative z-50">
             <Container>
                 <div className="flex justify-between items-center w-full h-[110px] gap-2 lg:gap-3 xl:gap-6">
                     {/* Logo */}
@@ -36,6 +37,35 @@ export default function Navbar() {
                         <div className="flex space-x-1 lg:space-x-2 xl:space-x-4 px-1 lg:px-2 xl:px-4 py-1.5 lg:py-2.5 rounded-full items-center">
                             {navLinks.map((link) => {
                                 const isActive = pathname === link.href;
+                                if (link.items) {
+                                    return (
+                                        <div key={link.label} className="relative group">
+                                            <button
+                                                className={`flex items-center gap-1 px-2 lg:px-3 xl:px-4 py-1.5 md:py-2 rounded-md text-sm lg:text-base xl:text-lg font-light transition-colors whitespace-nowrap ${isActive ? "text-[#084274]" : "text-black hover:text-[#084274]"
+                                                    }`}
+                                            >
+                                                {link.label}
+                                                <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                                                </svg>
+                                            </button>
+                                            <div className="absolute left-0 mt-0 w-64 bg-white rounded-xl shadow-xl overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top translate-y-2 group-hover:translate-y-0 z-50">
+                                                <div className="py-2">
+                                                    {link.items.map((subItem) => (
+                                                        <Link
+                                                            key={subItem.label}
+                                                            href={subItem.href}
+                                                            download={subItem.download}
+                                                            className="block px-6 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#084274] transition-colors"
+                                                        >
+                                                            {subItem.label}
+                                                        </Link>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    );
+                                }
                                 return (
                                     <Link
                                         key={link.label}
@@ -80,6 +110,37 @@ export default function Navbar() {
                         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 shadow-inner">
                             {navLinks.map((link) => {
                                 const isActive = pathname === link.href;
+                                if (link.items) {
+                                    return (
+                                        <div key={link.label} className="space-y-1">
+                                            <button
+                                                onClick={() => setActiveDropdown(activeDropdown === link.label ? null : link.label)}
+                                                className={`flex justify-between items-center w-full px-3 py-2 rounded-md text-base font-medium transition-colors ${activeDropdown === link.label ? "text-[#084274] bg-blue-50/50" : "text-black hover:text-[#084274] hover:bg-gray-50"
+                                                    }`}
+                                            >
+                                                {link.label}
+                                                <svg className={`w-4 h-4 transition-transform ${activeDropdown === link.label ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                                                </svg>
+                                            </button>
+                                            {activeDropdown === link.label && (
+                                                <div className="pl-4 space-y-1">
+                                                    {link.items.map((subItem) => (
+                                                        <Link
+                                                            key={subItem.label}
+                                                            href={subItem.href}
+                                                            download={subItem.download}
+                                                            onClick={() => setIsOpen(false)}
+                                                            className="block px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-[#084274] hover:bg-gray-50 transition-colors"
+                                                        >
+                                                            {subItem.label}
+                                                        </Link>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </div>
+                                    );
+                                }
                                 return (
                                     <Link
                                         key={link.label}
