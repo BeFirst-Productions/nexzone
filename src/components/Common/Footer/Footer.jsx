@@ -49,8 +49,9 @@ const Footer = () => {
                                 <div className="space-y-6">
                                     <h4 className="text-base md:text-xl font-semibold tracking-normal">Resources</h4>
                                     <ul className="space-y-4 ">
-                                        <li><a href="/blog" className="transition-colors hover:text-white">Blog</a></li>
                                         <li><a href="/privacy" className="transition-colors hover:text-white">Privacy</a></li>
+                                        <li><a href="/terms" className="transition-colors hover:text-white">Terms</a></li>
+
                                     </ul>
                                 </div>
 
@@ -58,7 +59,6 @@ const Footer = () => {
                                     <h4 className="text-base md:text-xl font-semibold tracking-normal">Company</h4>
                                     <ul className="space-y-4 ">
                                         <li><a href="/company-profile" className="transition-colors hover:text-white">Company profile</a></li>
-                                        <li><a href="/terms" className="transition-colors hover:text-white">Terms</a></li>
                                     </ul>
                                 </div>
 
