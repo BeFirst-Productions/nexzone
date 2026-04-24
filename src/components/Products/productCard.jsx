@@ -2,7 +2,6 @@ import Link from 'next/link';
 
 export const ProductCard = ({ product }) => {
     // ── Get the first image URL from images[] array ──────────────────
-    // Backend sends: images: [{ url: "...", public_id: "..." }]
     const getImageUrl = () => {
         if (product.images && product.images.length > 0) {
             return product.images[0].url || null;
@@ -11,21 +10,31 @@ export const ProductCard = ({ product }) => {
     };
 
     const imageSrc = getImageUrl() || '/images/products/placeholder.png';
+    
+    // ── Get Subcategory Name (Adjust this based on your exact MongoDB schema) ──
+    const subcategoryName = product.category?.name ;
 
     return (
-        // ✅ FIX: Use product._id (MongoDB ObjectId) not product.slug
-        // Backend doesn't have a slug field, it uses _id
         <Link
             href={`/products/${product._id}`}
             className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col group transition-all hover:shadow-md h-full cursor-pointer"
         >
-            {/* Image */}
-            <div className="relative w-full aspect-square bg-[#F5F5F7] p-2 sm:p-4 flex items-center justify-center overflow-hidden">
+            {/* Image Container */}
+            <div className="relative w-full aspect-square bg-[#F5F5F7] flex items-center justify-center overflow-hidden">
                 <img
                     src={imageSrc}
                     alt={product.name || "Product"}
-                    className="max-h-[85%] max-w-[85%] object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-cover mix-blend-multiply transition-transform duration-500 group-hover:scale-110"
                 />
+                
+                {/* NEW: Subcategory Badge (Top Left) */}
+                {subcategoryName && (
+                    <div className="absolute top-2 left-2 sm:top-3 sm:left-3 z-10">
+                        <span className="bg-[#113578]/90 backdrop-blur-sm text-white text-[8px] sm:text-[10px] font-semibold px-2 py-1 rounded shadow-sm uppercase tracking-wider">
+                            {subcategoryName}
+                        </span>
+                    </div>
+                )}
             </div>
 
             {/* Info */}

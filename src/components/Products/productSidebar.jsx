@@ -3,15 +3,12 @@
 import { useState, useEffect } from "react";
 import { productService } from "@/services";
 
-
 export const ProductSidebar = ({ onSelect, selectedItem }) => {
-    const [openCategory, setOpenCategory] = useState(null);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [categories, setCategories] = useState([]);
     const [loadingCategories, setLoadingCategories] = useState(true);
     const [hoveredCategory, setHoveredCategory] = useState(null);
     const [expandedCategory, setExpandedCategory] = useState(null);
-
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -29,20 +26,30 @@ export const ProductSidebar = ({ onSelect, selectedItem }) => {
         fetchCategories();
     }, []);
 
-    const handleCategoryClick = (name, id) => {
-        onSelect(name, id);
-        setIsMobileMenuOpen(false);
-        setExpandedCategory(null);
-    };
-
     const toggleExpand = (e, id) => {
         e.stopPropagation();
         setExpandedCategory(expandedCategory === id ? null : id);
     };
 
+    // FIX: Split logic for Main Categories and Subcategories
+    const handleMainCategoryClick = (e, cat, hasSubcategories) => {
+        // Always trigger the filter, even if it's a parent category
+        onSelect(cat.name, cat._id); 
+        
+        if (hasSubcategories) {
+            toggleExpand(e, cat._id); // Expand the accordion visually
+        } else {
+            setIsMobileMenuOpen(false); // Close menu if it's a leaf node
+        }
+    };
+
+    const handleLeafClick = (name, id) => {
+        onSelect(name, id);
+        setIsMobileMenuOpen(false);
+    };
+
     return (
         <div className="w-full lg:w-72 flex flex-col rounded-2xl shadow-lg border border-gray-200 bg-black relative">
-
 
             <div
                 className="bg-[#113578] p-5 flex flex-col cursor-pointer lg:cursor-default"
@@ -68,15 +75,13 @@ export const ProductSidebar = ({ onSelect, selectedItem }) => {
                 )}
             </div>
 
-
             <div className={`flex-1 flex flex-col py-2 transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-[2000px] opacity-100' : 'max-h-0 lg:max-h-none opacity-0 lg:opacity-100'
                 }`}>
                 <div className="overflow-y-visible max-h-[calc(100vh-200px)] lg:max-h-none scrollbar-hide">
 
-
                     <div className="flex flex-col border-b border-white/5">
                         <div
-                            onClick={() => handleCategoryClick("All Products", undefined)}
+                            onClick={() => handleLeafClick("All Products", undefined)}
                             className={`flex items-center px-5 py-4 cursor-pointer transition-colors text-sm font-medium ${selectedItem === "All Products"
                                 ? 'bg-[#048BFF] text-white font-semibold'
                                 : 'text-gray-300 hover:bg-[#112233]'
@@ -86,13 +91,11 @@ export const ProductSidebar = ({ onSelect, selectedItem }) => {
                         </div>
                     </div>
 
-
                     {loadingCategories && (
                         <div className="px-5 py-4 text-gray-400 text-sm animate-pulse">
                             Loading categories...
                         </div>
                     )}
-
 
                     {!loadingCategories && categories.map((cat) => {
                         const isSelected = selectedItem === cat.name;
@@ -115,13 +118,7 @@ export const ProductSidebar = ({ onSelect, selectedItem }) => {
                                             ? 'bg-[#113578]/60 text-white font-medium'
                                             : 'text-gray-300 hover:bg-[#112233] hover:text-white'
                                         }`}
-                                    onClick={(e) => {
-                                        if (hasSubcategories) {
-                                            toggleExpand(e, cat._id);
-                                        } else {
-                                            handleCategoryClick(cat.name, cat._id);
-                                        }
-                                    }}
+                                    onClick={(e) => handleMainCategoryClick(e, cat, hasSubcategories)}
                                 >
                                     <span className="text-sm font-medium truncate pr-2">{cat.name}</span>
 
@@ -155,7 +152,10 @@ export const ProductSidebar = ({ onSelect, selectedItem }) => {
                                         {subcategories.map((sub) => (
                                             <div
                                                 key={sub._id}
-                                                onClick={() => handleCategoryClick(sub.name, sub._id)}
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    handleLeafClick(sub.name, sub._id);
+                                                }}
                                                 className={`px-10 py-3 text-sm cursor-pointer border-l-4 transition-all ${selectedItem === sub.name
                                                     ? 'bg-[#048BFF] text-white border-white font-bold'
                                                     : 'text-gray-400 border-transparent hover:text-white hover:bg-white/5'
@@ -171,7 +171,7 @@ export const ProductSidebar = ({ onSelect, selectedItem }) => {
                                 {hasSubcategories && hoveredCategory === cat._id && (
                                     <div
                                         className="absolute left-[100%] top-0 w-64 hidden lg:block z-50 animate-in fade-in slide-in-from-left-2 duration-200"
-                                        style={{ paddingLeft: '4px' }} // Using padding instead of margin to prevent mouse-out gap
+                                        style={{ paddingLeft: '4px' }}
                                     >
                                         <div className="bg-[#112233] border border-white/10 rounded-xl shadow-2xl overflow-hidden backdrop-blur-md py-2 ring-1 ring-black/50">
                                             <div className="px-4 py-2 border-b border-white/5 mb-1 bg-white/5">
@@ -182,7 +182,7 @@ export const ProductSidebar = ({ onSelect, selectedItem }) => {
                                                     key={sub._id}
                                                     onClick={(e) => {
                                                         e.stopPropagation();
-                                                        handleCategoryClick(sub.name, sub._id);
+                                                        handleLeafClick(sub.name, sub._id);
                                                         setHoveredCategory(null);
                                                     }}
                                                     className={`px-4 py-2.5 text-sm cursor-pointer transition-colors ${selectedItem === sub.name

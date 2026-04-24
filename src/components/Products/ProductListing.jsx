@@ -56,7 +56,6 @@ const ProductListing = () => {
     // ── Fetch Logic ──────────────────────────────────────────────────────────
     useEffect(() => {
         const fetchProducts = async () => {
-            // Use initialLoading for the very first fetch, fetching for updates
             if (isFirstRender.current) {
                 setInitialLoading(true);
                 isFirstRender.current = false;
@@ -67,7 +66,6 @@ const ProductListing = () => {
 
             try {
                 // Determine search mode vs listing mode
-                // urlSearchQuery (from URL) takes priority for "Search Mode"
                 if (urlSearchQuery) {
                     const response = await productService.searchProducts(urlSearchQuery);
                     const fetchedProducts = response?.data?.data || [];
@@ -86,7 +84,6 @@ const ProductListing = () => {
                     setProducts(fetchedProducts);
                     setTotalPages(total);
                     
-                    // Smooth scroll top on page change (only if not first render)
                     if (currentPage > 1) {
                         const topPos = window.innerWidth < 1024 ? 200 : 400;
                         window.scrollTo({ top: topPos, behavior: 'smooth' });
@@ -105,10 +102,13 @@ const ProductListing = () => {
     }, [currentPage, selectedCategoryId, urlSearchQuery]);
 
     const handleCategorySelect = (label, categoryId) => {
-        // If we have URL params, clear them to return to clean state controlled by sidebar
-        if (urlSearchQuery || urlCategoryId) {
-            router.replace('/products');
+        // FIX: Update URL to maintain a single source of truth and clear previous searches
+        if (categoryId) {
+            router.replace(`/products?category=${categoryId}&name=${encodeURIComponent(label)}`, { scroll: false });
+        } else {
+            router.replace('/products', { scroll: false }); // All Products
         }
+        
         setSelectedCategory(label);
         setSelectedCategoryId(categoryId);
         setCurrentPage(1);

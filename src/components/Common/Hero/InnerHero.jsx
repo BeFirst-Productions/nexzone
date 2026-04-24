@@ -1,21 +1,24 @@
-
 import React from 'react';
 import Link from 'next/link';
 import Container from '../Layout/Container';
 
-const InnerHero = ({ title, breadcrumb = [] }) => {
+// Added `bgImage` to the props so you can pass different images for different pages
+const InnerHero = ({ title, breadcrumb = [], bgImage = "YOUR_DEFAULT_IMAGE_URL_HERE" }) => {
     return (
         <section
             className="relative w-full overflow-hidden py-12 md:py-24"
             style={{
-                backgroundImage: "linear-gradient(90deg, rgba(4,68,122,1.00) 0%, rgba(16,101,175,1.00) 50%, rgba(30,120,200,1.00) 100%)",
-                backgroundPosition: "center center"
+                // Removed the gradient and added the background image URL
+                backgroundImage: `url('/images/bg/printer-banner.png')`,
+                backgroundPosition: "center center",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat"
             }}
         >
-            {/* Background Decoration: Centered Cross and Dotted Line */}
+            {/* Optional: Add a dark overlay if your image is too bright for the white text */}
+            {/* <div className="absolute inset-0 bg-black/40 z-0"></div> */}
 
-
-            <Container className="relative">
+            <Container className="relative z-10">
                 <div className="flex flex-col gap-2 md:gap-4 relative h-full min-h-[140px] md:min-h-[180px] justify-center">
                     {/* Left Breadcrumb - Positioned inside container for all screens */}
                     <nav aria-label="Breadcrumb" className="md:absolute md:left-0 z-20">
