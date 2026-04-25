@@ -28,18 +28,23 @@ export const ProductCard = ({ product }) => {
                 />
                 
                 {/* NEW: Subcategory Badge (Top Left) */}
-                {subcategoryName && (
+                {/* {subcategoryName && (
                     <div className="absolute top-2 left-2 sm:top-3 sm:left-3 z-10">
                         <span className="bg-[#113578]/90 backdrop-blur-sm text-white text-[8px] sm:text-[10px] font-semibold px-2 py-1 rounded shadow-sm uppercase tracking-wider">
                             {subcategoryName}
                         </span>
                     </div>
-                )}
+                )} */}
             </div>
 
             {/* Info */}
             <div className="p-2 sm:p-4 flex-1 flex flex-col justify-between">
                 <div>
+                    {subcategoryName && (
+                        <p className="text-[9px] sm:text-[12px]  tracking-wider text-gray-600 font-medium mb-1">
+                            {subcategoryName}
+                        </p>
+                    )}
                     <div className="h-[3em] leading-[1.2] overflow-hidden mb-1 sm:mb-2">
                         <h3 className="text-[10px] sm:text-[11px] lg:text-[12px] xl:text-sm font-semibold text-[#113578] line-clamp-3 leading-[1.2]">
                             {product.name}
