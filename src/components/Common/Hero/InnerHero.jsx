@@ -9,7 +9,7 @@ const InnerHero = ({ title, breadcrumb = [], bgImage = "YOUR_DEFAULT_IMAGE_URL_H
             className="relative w-full overflow-hidden py-12 md:py-24"
             style={{
                 // Removed the gradient and added the background image URL
-                backgroundImage: `url('/images/bg/printer-banner.png')`,
+                backgroundImage: `url('/images/bg/printer-banner.jpeg')`,
                 backgroundPosition: "center center",
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat"
