@@ -14,8 +14,9 @@ export default function ServicesPage() {
             <InnerHero
                 title="Our Services"
                 breadcrumb={[
-                    { label: "Services", href: "/services" }
+                    { label: "Services", href: "/services" }        
                 ]}
+                bgImage="/images/bg/servicebanner.jpeg"
             />
 
             {/* Services Section */}

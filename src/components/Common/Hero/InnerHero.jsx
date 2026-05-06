@@ -3,18 +3,20 @@ import Link from 'next/link';
 import Container from '../Layout/Container';
 
 // Added `bgImage` to the props so you can pass different images for different pages
-const InnerHero = ({ title, breadcrumb = [], bgImage = "YOUR_DEFAULT_IMAGE_URL_HERE" }) => {
+const InnerHero = ({ title, breadcrumb = [], bgImage = "/images/bg/printer-banner.jpeg" }) => {
     return (
-        <section
-            className="relative w-full overflow-hidden py-12 md:py-24"
-            style={{
-                // Removed the gradient and added the background image URL
-                backgroundImage: `url('/images/bg/printer-banner.jpeg')`,
-                backgroundPosition: "center center",
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat"
-            }}
-        >
+       <section
+    className="relative w-full overflow-hidden py-12 md:py-24"
+    style={{
+        // We use a gradient + image. The gradient ensures the left side stays dark/blue 
+        // while the image is anchored to the right.
+        backgroundImage: `linear-gradient(to right, #003366 20%, transparent 80%), url('${bgImage}')`,
+        backgroundPosition: "right center", // Changed from center center to right center
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundColor: "#003366" // Fallback color that matches your image's dark blue
+    }}
+>
             {/* Optional: Add a dark overlay if your image is too bright for the white text */}
             {/* <div className="absolute inset-0 bg-black/40 z-0"></div> */}
 
